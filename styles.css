@@ -1,0 +1,374 @@
+:root {
+    --board-bg: #f5e1c9;
+    --board-border: #e0c0a0;
+    --pink-light: #ffcce6;
+    --blue-light: #b3d9ff;
+    --yellow-light: #fff2b3;
+    --green-light: #b3ffcc;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.desk-lamp {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    width: 100px;
+    height: 300px;
+    z-index: 1;
+}
+
+.lamp-base {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.lamp-arm {
+    position: absolute;
+    bottom: 20px;
+    width: 10px;
+    height: 150px;
+    background-color: white;
+    border-radius: 5px;
+    transform-origin: bottom;
+    transform: rotate(-30deg);
+}
+
+.lamp-joint {
+    position: absolute;
+    bottom: 170px;
+    left: 45px;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.lamp-head {
+    position: absolute;
+    top: 80px;
+    left: 60px;
+    width: 40px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px 5px 20px 20px;
+}
+
+.dashboard-container {
+    width: 800px;
+    height: 600px;
+    background-color: var(--board-bg);
+    border: 15px solid var(--board-border);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    padding: 20px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr;
+    grid-template-rows: 60px 200px 1fr;
+    grid-gap: 15px;
+}
+
+.board-title {
+    grid-column: 2 / 3;
+    text-align: center;
+    font-size: 20px;
+    color: #633;
+    background-color: #f8d7c3;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.anime-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--pink-light);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+}
+
+.avatar-main {
+    grid-row: 1;
+    grid-column: 1;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><circle cx="25" cy="20" r="15" fill="%23ffccee"/><circle cx="20" cy="18" r="2" fill="%23663366"/><circle cx="30" cy="18" r="2" fill="%23663366"/><path d="M20,24 Q25,28 30,24" stroke="%23663366" fill="none" stroke-width="1"/></svg>');
+}
+
+.sidebar {
+    grid-row: 2 / 4;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.sidebar-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    cursor: pointer;
+    font-size: 24px;
+    color: #637a9f;
+    transition: transform 0.2s;
+}
+
+.sidebar-button:hover {
+    transform: scale(1.1);
+}
+
+.window-section {
+    grid-row: 2;
+    grid-column: 2 / 4;
+    background-color: #c5d8e8;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.window-curtains {
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+}
+
+.curtain {
+    width: 45%;
+    height: 150px;
+    background-color: var(--blue-light);
+    border-radius: 0 0 10px 10px;
+}
+
+.window-view {
+    flex: 1;
+    background: linear-gradient(to bottom, #87ceeb, #e6f7ff);
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sticky-notes-container {
+    grid-row: 3;
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.sticky-note {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.note-pin {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #3399ff;
+}
+
+.note-blue {
+    background-color: var(--blue-light);
+}
+
+.note-pink {
+    background-color: var(--pink-light);
+}
+
+.note-yellow {
+    background-color: var(--yellow-light);
+}
+
+.note-green {
+    background-color: var(--green-light);
+}
+
+.task-calendar-section {
+    grid-row: 3;
+    grid-column: 3;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+}
+
+.task-list {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 15px;
+    position: relative;
+}
+
+.task-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.calendar {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 15px;
+    position: relative;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-day {
+    background-color: var(--blue-light);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-cell {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #333;
+}
+
+.cell-highlight {
+    background-color: var(--pink-light);
+}
+
+.cell-task {
+    background-color: var(--blue-light);
+}
+
+.desk-area {
+    grid-row: 2;
+    grid-column: 3;
+    background-color: #e8d5c5;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.computer-monitor {
+    width: 120px;
+    height: 80px;
+    background-color: white;
+    border-radius: 5px;
+    border: 5px solid #333;
+    margin: 0 auto;
+    position: relative;
+}
+
+.monitor-stand {
+    width: 30px;
+    height: 10px;
+    background-color: #333;
+    margin: 0 auto;
+}
+
+.desk-items {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.desk-item {
+    width: 20px;
+    height: 20px;
+    background-color: var(--pink-light);
+    border-radius: 5px;
+}
+
+.plant-pot {
+    width: 25px;
+    height: 30px;
+    background-color: #bf8c6d;
+    border-radius: 5px 5px 10px 10px;
+    position: relative;
+}
+
+.plant-leaves {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 25px;
+    height: 20px;
+    background-color: #77dd77;
+    border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        width: 90%;
+        height: auto;
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: auto;
+    }
+
+    .desk-lamp {
+        display: none;
+    }
+}
