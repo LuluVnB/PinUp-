@@ -1,3 +1,6 @@
+// first go to cd Login/
+// second type npm run devStart
+// now you can access website
 // access by going to http://localhost:3000/home in your browser
 // http://localhost:3000/login works too
 
