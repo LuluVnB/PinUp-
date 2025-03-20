@@ -1,4 +1,4 @@
-<<<<<<< HEAD (Current Change)
+// <<<<<<< HEAD (Current Change)
 console.log("hello world justin was here");
 let nav = 0;
 let clicked = null;
@@ -65,4 +65,4 @@ mailBtn.onclick = function(){
 settinghBtn.onclick = function(){
     
 }
->>>>>>> 0bf8f520c90dbed6dfa9ec9ad0a66f0273cac613
+// >>>>>>> 0bf8f520c90dbed6dfa9ec9ad0a66f0273cac613
