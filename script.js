@@ -1,20 +1,53 @@
+<<<<<<< HEAD (Current Change)
 console.log("hello world justin was here");
+let nav = 0;
+let clicked = null;
+let events = localStorage.getItem('events') ? JSON.parse(locatlStorage.getItem('events')) : [];
 
-<<<<<<< HEAD
-=======
+const calendar = document.getElementById("TaskCalendar")
+const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+function load() {
+    const dt = new Date();
+
+    console.log(dt)
+    const day = dt.getDate();
+    const month = dt.getMonth();
+    const year = dt.getFullYear();
+
+    console.log(day,month,year);
+
+    const firstDayOfMonth = new Date(year, month, 1)
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+    }
+    );
+    const paddingDays  = weekdays.indexOf(dateString.split(', ')[0]);
+    
+}
+
+load();
+
 //Profile section
 
 
+//Time tracking
+
 
 //Button functionality
-searchBtn = document.getElementsByClassName("sidebar-button");
-taskBtn = document.getElementsByClassName("sidebar-button");
-notifBtn = document.getElementsByClassName("sidebar-button");
-mailBtn = document.getElementsByClassName("sidebar-button");
-settingBtn = document.getElementsByClassName("sidebar-button");
+searchBtn = document.getElementsById("search");
+taskBtn = document.getElementsById("tasks");
+notifBtn = document.getElementsById("notif");
+mailBtn = document.getElementsBId("mail");
+settingBtn = document.getElementsById("settings");
 
 searchBtn.onclick = function(){
-
+    
 }
 
 taskBtn.onclick = function(){
