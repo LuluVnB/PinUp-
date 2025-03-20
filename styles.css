@@ -71,7 +71,7 @@ body {
 
 .dashboard-container {
     width: 800px;
-    height: 600px;
+    height: 700px;
     background-color: var(--board-bg);
     border: 15px solid var(--board-border);
     border-radius: 20px;
@@ -362,7 +362,7 @@ body {
 
 @media (max-width: 900px) {
     .dashboard-container {
-        width: 90%;
+        width: 100%;
         height: auto;
         grid-template-columns: 50px 1fr;
         grid-template-rows: auto;
