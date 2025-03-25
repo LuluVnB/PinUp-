@@ -1,5 +1,4 @@
 // <<<<<<< HEAD (Current Change)
-console.log("hello world justin was here");
 let nav = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(locatlStorage.getItem('events')) : [];
@@ -8,12 +7,13 @@ const calendar = document.getElementById("TaskCalendar")
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 //Button functionality
-searchBtn = document.getElementsById("search");
-taskBtn = document.getElementsById("tasks");
-notifBtn = document.getElementsById("notif");
-mailBtn = document.getElementsBId("mail");
-settingBtn = document.getElementsById("settings");
+searchBtn = document.querySelector(".sidebar-button");
+taskBtn = document.getElementsByClassName("sidebar-button");
+notifBtn = document.getElementsByClassName("sidebar-button");
+mailBtn = document.getElementsByClassName("sidebar-button");
+settingBtn = document.getElementsByClassName("sidebar-button");
 function load() {
+    //date tracking. 
     const dt = new Date();
 
     console.log(dt)
@@ -21,10 +21,10 @@ function load() {
     const month = dt.getMonth();
     const year = dt.getFullYear();
 
-    console.log(day,month,year);
-
     const firstDayOfMonth = new Date(year, month, 1)
     const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    console.log(day,month,year);
 
     const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
         weekday: 'long',
@@ -34,7 +34,20 @@ function load() {
     }
     );
     const paddingDays  = weekdays.indexOf(dateString.split(', ')[0]);
-    
+
+//Time tracking
+let hours = document.getElementById("hrs");
+let min = document.getElementById("mins");
+let sec = document.getElementById("secs");
+setInterval(()=>{
+let currentTime = new Date();
+
+console.log (currentTime.getHours());
+
+hours.innerHTML = currentTime.getHours();
+min.innerHTML = currentTime.getMinutes();
+sec.innerHTML = currentTime.getSeconds();
+}, 1000)
 }
 
 load();
@@ -42,13 +55,8 @@ load();
 //Profile section
 
 
-//Time tracking
-
-
-
-
 searchBtn.onclick = function(){
-    
+    console.log("ping!");
 }
 
 taskBtn.onclick = function(){
@@ -63,7 +71,7 @@ mailBtn.onclick = function(){
     
 }
 
-settinghBtn.onclick = function(){
+settingBtn.onclick = function(){
     
 }
 // >>>>>>> 0bf8f520c90dbed6dfa9ec9ad0a66f0273cac613
