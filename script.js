@@ -7,6 +7,12 @@ let events = localStorage.getItem('events') ? JSON.parse(locatlStorage.getItem('
 const calendar = document.getElementById("TaskCalendar")
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+//Button functionality
+searchBtn = document.getElementsById("search");
+taskBtn = document.getElementsById("tasks");
+notifBtn = document.getElementsById("notif");
+mailBtn = document.getElementsBId("mail");
+settingBtn = document.getElementsById("settings");
 function load() {
     const dt = new Date();
 
@@ -39,12 +45,7 @@ load();
 //Time tracking
 
 
-//Button functionality
-searchBtn = document.getElementsById("search");
-taskBtn = document.getElementsById("tasks");
-notifBtn = document.getElementsById("notif");
-mailBtn = document.getElementsBId("mail");
-settingBtn = document.getElementsById("settings");
+
 
 searchBtn.onclick = function(){
     
