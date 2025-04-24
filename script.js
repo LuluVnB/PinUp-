@@ -67,14 +67,26 @@ load();
 
 
 // Button functionality
+const popup = document.getElementById("popup");
+const closeBtn = document.getElementById("close-popup");
+
 document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".sidebar-button");
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             button.classList.toggle("active");
-
+            popup.classList.remove("hidden");
             console.log("Sidebar button clicked:", button);
         })
     })
+    closeBtn.addEventListener("click", () => {
+        popup.classList.add("hidden");
+      });
+    
+      popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+          popup.classList.add("hidden");
+        }
+      });
 })
 // >>>>>>> 0bf8f520c90dbed6dfa9ec9ad0a66f0273cac613
