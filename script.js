@@ -35,6 +35,17 @@ function load() {
     );
     const paddingDays  = weekdays.indexOf(dateString.split(', ')[0]);
 
+for (let i = 1; i <= paddingDays + daysInMonth; i++){
+    const daySquare = document.createElement('div');
+    daySquare.classList.add('day');
+
+    if (i > paddingDays){
+
+    }
+    else{
+        daySquare.classList.add('padding');
+    }
+}
 //Time tracking
 let hours = document.getElementById("hrs");
 let min = document.getElementById("mins");
@@ -55,23 +66,15 @@ load();
 //Profile section
 
 
-searchBtn.onclick = function(){
-    console.log("ping!");
-}
+// Button functionality
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".sidebar-button");
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
 
-taskBtn.onclick = function(){
-    
-}
-
-notifBtn.onclick = function(){
-    
-}
-
-mailBtn.onclick = function(){
-    
-}
-
-settingBtn.onclick = function(){
-    
-}
+            console.log("Sidebar button clicked:", button);
+        })
+    })
+})
 // >>>>>>> 0bf8f520c90dbed6dfa9ec9ad0a66f0273cac613
