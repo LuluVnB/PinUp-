@@ -6,12 +6,6 @@ let events = localStorage.getItem('events') ? JSON.parse(locatlStorage.getItem('
 const calendar = document.getElementById("TaskCalendar")
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-//Button functionality
-searchBtn = document.querySelector(".sidebar-button");
-taskBtn = document.getElementsByClassName("sidebar-button");
-notifBtn = document.getElementsByClassName("sidebar-button");
-mailBtn = document.getElementsByClassName("sidebar-button");
-settingBtn = document.getElementsByClassName("sidebar-button");
 function load() {
     //date tracking. 
     const dt = new Date();
@@ -58,35 +52,60 @@ console.log (currentTime.getHours());
 hours.innerHTML = currentTime.getHours();
 min.innerHTML = currentTime.getMinutes();
 sec.innerHTML = currentTime.getSeconds();
-}, 1000)
+})
 }
-
 load();
-
 //Profile section
 
 
 // Button functionality
-const popup = document.getElementById("popup");
-const closeBtn = document.getElementById("close-popup");
-
 document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("close-popup");
+    const saveBtn = document.getElementById("save-event");
     const buttons = document.querySelectorAll(".sidebar-button");
+
     buttons.forEach(button => {
         button.addEventListener("click", () => {
+            //On click, bring up pop up window.
             button.classList.toggle("active");
             popup.classList.remove("hidden");
             console.log("Sidebar button clicked:", button);
         })
     })
+    //integrates functionality of exit button.
     closeBtn.addEventListener("click", () => {
         popup.classList.add("hidden");
       });
-    
-      popup.addEventListener("click", (e) => {
+    //integrates ability to close the pop up by clicking out of the pop up.
+    popup.addEventListener("click", (e) => {
         if (e.target === popup) {
           popup.classList.add("hidden");
         }
       });
-})
+
+        // Task List Functionality
+        saveBtn.addEventListener("click", () => {
+        const dateInput = document.getElementById("event-date").value.trim();
+        const titleInput = document.getElementById("event-title").value.trim();
+
+        if (!dateInput || !titleInput) {
+        alert("Please enter both date and event title.");
+        return;
+        }
+
+        const taskList = document.querySelector(".task-list");
+        const taskBar = document.createElement("div");
+        taskBar.className = "task-bar";
+        taskBar.textContent = `${dateInput}: ${titleInput}`;
+        taskList.appendChild(taskBar);
+
+        popup.classList.add("hidden");
+        document.getElementById("event-date").value = "";
+        document.getElementById("event-title").value = "";
+    });
+});
+
+// Calendar functionality.
+
 // >>>>>>> 0bf8f520c90dbed6dfa9ec9ad0a66f0273cac613
