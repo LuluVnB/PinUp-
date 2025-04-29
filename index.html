@@ -20,11 +20,11 @@
         <div class="avatar-main avatar"></div>
 
         <div class="sidebar">
-            <div class="sidebar-button">🔍</div>
-            <div class="sidebar-button">📋</div>
-            <div class="sidebar-button">🔔</div>
-            <div class="sidebar-button">💌</div>
-            <div class="sidebar-button">⚙️</div>
+            <div class="sidebar-button search-button">🔍</div>
+            <div class="sidebar-button add-event-button">📋</div>
+            <div class="sidebar-button notifications-button">🔔</div>
+            <div class="sidebar-button mail-button">💌</div>
+            <div class="sidebar-button settings-button">⚙️</div>
         </div>
 
         <div id="popup" class="popup hidden">
@@ -32,7 +32,7 @@
                 <span id="close-popup" class="close-button">&times;</span>
                 <h3>Add Event</h3>
                 <label for="event-date">Date:</label>
-                <input type="number" id="event-date" min="1" max="31" placeholder="Enter date (1-31)" />
+                <input type="date" id="event-date" placeholder="Enter date (1-31)" />
                 <label for="event-title">Event:</label>
                 <input type="text" id="event-title" placeholder="Event title" />
                 <button id="save-event">Save</button>
@@ -72,8 +72,8 @@
 
         <div class="sticky-notes-container">
             <div class="sticky-note note-blue">
-                1
                 <div class="note-pin"></div>
+                1
             </div>
             <div class="sticky-note note-pink">
                 2
