@@ -92,6 +92,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const saveBtn = document.getElementById("save-event");
     const buttons = document.querySelectorAll(".sidebar-button");
 
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        const storedEvents = JSON.parse(localStorage.getItem(`events_${currentUser}`));
+        if (storedEvents && Array.isArray(storedEvents)) {
+            events = storedEvents.map(e => ({
+                ...e,
+                date: new Date(e.date) // rehydrate dates
+            }));
+
+            updateStickyNotes();
+
+            const taskList = document.querySelector(".task-list");
+            for (const e of events) {
+                const dateStr = e.date.toISOString().split("T")[0];
+                const taskBar = document.createElement("div");
+                taskBar.className = "task-bar";
+                taskBar.textContent = `${dateStr}: ${e.title}`;
+                taskList.appendChild(taskBar);
+            }
+        }
+    }
+
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             //On click, bring up pop up window.
@@ -116,30 +138,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Event adder pop up
         saveBtn.addEventListener("click", () => {
-        const dateInput = document.getElementById("event-date").value.trim();
-        const titleInput = document.getElementById("event-title").value.trim();
-
-        if (!dateInput || !titleInput) {
-        alert("Please enter both date and event title.");
-        return;
-        }
-        
-        // Add recent events to sticky notes array.
-        const eventDate = new Date(dateInput);  //store event
-        events.push({ date: eventDate, title: titleInput }); // sort by more recent date
-        updateStickyNotes(); // render recent.
-
-        // Add event to task list
-        const taskList = document.querySelector(".task-list");
-        const taskBar = document.createElement("div");
-        taskBar.className = "task-bar";
-        taskBar.textContent = `${dateInput}: ${titleInput}`;
-        taskList.appendChild(taskBar);
-
-        popup.classList.add("hidden");
-        document.getElementById("event-date").value = "";
-        document.getElementById("event-title").value = "";
-    });
+          const dateInput = document.getElementById("event-date").value.trim();
+          const titleInput = document.getElementById("event-title").value.trim();
+      
+          if (!dateInput || !titleInput) {
+              alert("Please enter both date and event title.");
+              return;
+          }
+      
+          const currentUser = localStorage.getItem('currentUser');
+          if (!currentUser) {
+              alert("No user logged in.");
+              return;
+          }
+      
+          // Create and store event
+          const eventDate = new Date(dateInput);
+          events.push({ date: eventDate, title: titleInput });
+      
+          // Save to localStorage under this user's email
+          localStorage.setItem(`events_${currentUser}`, JSON.stringify(events));
+      
+          // Update sticky notes
+          updateStickyNotes();
+      
+          // Add event to task list
+          const taskList = document.querySelector(".task-list");
+          const taskBar = document.createElement("div");
+          taskBar.className = "task-bar";
+          taskBar.textContent = `${dateInput}: ${titleInput}`;
+          taskList.appendChild(taskBar);
+      
+          // Clear form and close popup
+          popup.classList.add("hidden");
+          document.getElementById("event-date").value = "";
+          document.getElementById("event-title").value = "";
+      });      
 });
 
 // Calendar functionality.
