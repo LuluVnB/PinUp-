@@ -275,7 +275,26 @@ color: #000;
     border-radius: 8px;
     font-size: 0.95em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+    display: flex;
+    justify-content: space-between; /* Push X to the right */
+    align-items: center;
+    position: relative;
+}
+
+.delete-task {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.1em;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.task-bar:hover .delete-task {
+    opacity: 1;
+}
+
 
 .task-header {
     text-align: center;

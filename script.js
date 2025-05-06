@@ -3,6 +3,10 @@ let nav = 0;
 let clicked = null;
 let events = [];
 
+//Reference for current date
+const today = new Date();
+today.setHours(0,0,0,0);
+
 const calendar = document.getElementById("TaskCalendar")
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -40,6 +44,7 @@ for (let i = 1; i <= paddingDays + daysInMonth; i++){
         daySquare.classList.add('padding');
     }
 }
+
 //Time tracking
 let hours = document.getElementById("hrs");
 let min = document.getElementById("mins");
@@ -55,35 +60,86 @@ sec.innerHTML = currentTime.getSeconds();
 })
 }
 load();
-//Profile section
 
+
+function updateTaskList() {
+    const taskList = document.querySelector(".task-list");
+    taskList.innerHTML = ""; // Clear current list
+
+    const sortedEvents = [...events].sort((a, b) => a.date - b.date); //sorts events in ascending order
+
+    sortedEvents.forEach((e, i) => {
+        const dateStr = e.date.toISOString().split("T")[0];
+        const taskBar = document.createElement("div");
+        taskBar.className = "task-bar";
+        taskBar.innerHTML = `
+            ${dateStr}: ${e.title}
+            <span class="delete-task" data-index="${i}" style="float:right; cursor:pointer; margin-left:10px;">❌</span>
+        `;
+        taskList.appendChild(taskBar);
+    });
+}
 
 //Sticky note function
 function updateStickyNotes() {
     const noteElements = document.querySelectorAll(".sticky-note");
+     const sortedEvents = [...events]
+        .filter(e => {
+            const eventDate = new Date(e.date);
+            eventDate.setHours(0, 0, 0, 0);
+            return eventDate >= today;
+        })
+        .sort((a, b) => a.date - b.date)
+        .slice(0,8);
+
+
+    noteElements.forEach((noteElement, i) => {
+      const pin = noteElement.querySelector(".note-pin");
   
-    for (let i = 0; i < noteElements.length; i++) {
-      const note = noteElements[i];
+      // Clone the pin if it exists
+      const existingPin = pin ? pin.cloneNode(true) : null;
+      noteElement.innerHTML = ""; // Clear all content
+      if (existingPin) noteElement.appendChild(existingPin);
+
+      const event = sortedEvents[i];
+      
+      if (event) {
+          
+          const dateStr = event.date.toISOString().split("T")[0];
   
-      // Get the existing pin element (still leave it in the DOM)
-      const pin = note.querySelector(".note-pin");
+          const dateSpan = document.createElement("span");
+          dateSpan.className = "note-date";
+          dateSpan.textContent = dateStr;
   
-      // Clear everything except the pin
-      note.innerHTML = "";
+          const titleSpan = document.createElement("span");
+          titleSpan.className = "note-title";
+          titleSpan.textContent = event.title;
   
-      if (events[i]) {
-        const dateStr = events[i].date.toISOString().split("T")[0];
-        note.innerHTML = `
-        <span class="note-date">${dateStr}</span>
-        <span class="note-title">${events[i].title}</span>
-        `;
+          noteElement.appendChild(dateSpan);
+          noteElement.appendChild(titleSpan);
+  
+          if (existingPin) {
+            const originalIndex = events.findIndex(ev =>
+              ev.date.toISOString() === event.date.toISOString() &&
+              ev.title === event.title
+          );
+
+              existingPin.setAttribute("data-index", originalIndex);
+              existingPin.addEventListener("click", (e) => {
+                  e.stopPropagation();
+                  const index = parseInt(e.target.getAttribute("data-index"));
+                  if (!isNaN(index)) {
+                      events.splice(index, 1);
+                      const currentUser = localStorage.getItem('currentUser');
+                      localStorage.setItem(`events_${currentUser}`, JSON.stringify(events));
+                      updateStickyNotes();
+                      updateTaskList();
+                  }
+              });
+          }
       }
-  
-      // Re-append the pin for visuals
-      if (pin) note.appendChild(pin);
-    }
-  }
-  
+  });
+}
 
 // Button functionality
 document.addEventListener("DOMContentLoaded", () => {
@@ -103,17 +159,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateStickyNotes();
 
-            const taskList = document.querySelector(".task-list");
-            for (const e of events) {
-                const dateStr = e.date.toISOString().split("T")[0];
-                const taskBar = document.createElement("div");
-                taskBar.className = "task-bar";
-                taskBar.textContent = `${dateStr}: ${e.title}`;
-                taskList.appendChild(taskBar);
-            }
+            updateTaskList();
         }
     }
-
+    
+    //Button reactivity, just logs to check that each button is being clicked in console.
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             //On click, bring up pop up window.
@@ -129,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeBtn.addEventListener("click", () => {
         popup.classList.add("hidden");
       });
+      
     //integrates ability to close the pop up by clicking out of the pop up.
     popup.addEventListener("click", (e) => {
         if (e.target === popup) {
@@ -155,28 +206,37 @@ document.addEventListener("DOMContentLoaded", () => {
           // Create and store event
           const eventDate = new Date(dateInput);
           events.push({ date: eventDate, title: titleInput });
-      
+
           // Save to localStorage under this user's email
           localStorage.setItem(`events_${currentUser}`, JSON.stringify(events));
-      
-          // Update sticky notes
+
+          // Update sticky notes and task list.
           updateStickyNotes();
-      
-          // Add event to task list
-          const taskList = document.querySelector(".task-list");
-          const taskBar = document.createElement("div");
-          taskBar.className = "task-bar";
-          taskBar.textContent = `${dateInput}: ${titleInput}`;
-          taskList.appendChild(taskBar);
+          updateTaskList();
       
           // Clear form and close popup
           popup.classList.add("hidden");
           document.getElementById("event-date").value = "";
           document.getElementById("event-title").value = "";
-      });      
+      });  
+
+      //Deleting tasks
+      document.querySelector(".task-list").addEventListener("click", function(e) {
+        if (e.target.classList.contains("delete-task")) {
+            const index = parseInt(e.target.getAttribute("data-index"));
+            if (!isNaN(index)) {
+                events.splice(index, 1);
+                const currentUser = localStorage.getItem('currentUser');
+                localStorage.setItem(`events_${currentUser}`, JSON.stringify(events));
+                updateStickyNotes();
+                updateTaskList();
+            }
+        }
+    });
+    
 });
 
-// Calendar functionality.
+
 
 
 
