@@ -68,15 +68,22 @@ function updateTaskList() {
 
     const sortedEvents = [...events].sort((a, b) => a.date - b.date); //sorts events in ascending order
 
-    sortedEvents.forEach((e, i) => {
-        const dateStr = e.date.toISOString().split("T")[0];
-        const taskBar = document.createElement("div");
-        taskBar.className = "task-bar";
-        taskBar.innerHTML = `
-            ${dateStr}: ${e.title}
-            <span class="delete-task" data-index="${i}" style="float:right; cursor:pointer; margin-left:10px;">❌</span>
-        `;
-        taskList.appendChild(taskBar);
+    sortedEvents.forEach((sortedEvent) => {
+      const dateStr = sortedEvent.date.toISOString().split("T")[0];
+      const taskBar = document.createElement("div");
+      taskBar.className = "task-bar";
+
+      // Find original index
+      const originalIndex = events.findIndex(ev =>
+          ev.date.toISOString() === sortedEvent.date.toISOString() &&
+          ev.title === sortedEvent.title
+      );
+
+      taskBar.innerHTML = `
+          ${dateStr}: ${sortedEvent.title}
+          <span class="delete-task" data-index="${originalIndex}" style="float:right; cursor:pointer; margin-left:10px;">❌</span>
+      `;
+      taskList.appendChild(taskBar);
     });
 }
 
