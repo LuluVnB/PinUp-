@@ -1,23 +1,202 @@
+/* Base Variables - these will be overridden by theme-specific variables */
 :root {
     --board-bg: #f5e1c9;
     --board-border: #e0c0a0;
-    --pink-light: #ffcce6;
-    --blue-light: #b3d9ff;
-    --yellow-light: #fff2b3;
-    --green-light: #b3ffcc;
+    --text-color: #333;
+    --title-bg: #f8d7c3;
+    --title-color: #633;
+    --note-blue: #b3d9ff;
+    --note-pink: #ffcce6;
+    --note-yellow: #fff2b3;
+    --note-green: #b3ffcc;
     --shadow-color: rgba(0, 0, 0, 0.15);
+    --sidebar-button-bg: #b3d9ff;
+    --sidebar-button-color: #637a9f;
+    --window-bg: #c5d8e8;
+    --window-view-bg: linear-gradient(to bottom, #87ceeb, #e6f7ff);
+    --curtain-color: #b3d9ff;
+    --desk-bg: #e8d5c5;
+    --monitor-bg: white;
+    --monitor-border: #333;
+    --plant-pot: #bf8c6d;
+    --plant-leaves: #77dd77;
+    --task-bg: white;
+    --calendar-bg: white;
+    --day-highlight: #ffcce6;
+    --day-task: #b3d9ff;
+    --pin-color: #3399ff;
+}
+
+/* Theme: Soft (default) */
+body.soft {
+    --board-bg: #f5e1c9;
+    --board-border: #e0c0a0;
+    --text-color: #333;
+    --title-bg: #f8d7c3;
+    --title-color: #633;
+    --note-blue: #cde3fa;
+    --note-pink: #f9c7d9;
+    --note-yellow: #fdf2b3;
+    --note-green: #cbf5dc;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --sidebar-button-bg: #cde3fa;
+    --sidebar-button-color: #637a9f;
+    --window-bg: #c5d8e8;
+    --window-view-bg: linear-gradient(to bottom, #87ceeb, #e6f7ff);
+    --curtain-color: #cde3fa;
+    --desk-bg: #e8d5c5;
+    --monitor-bg: white;
+    --monitor-border: #333;
+    --plant-pot: #bf8c6d;
+    --plant-leaves: #77dd77;
+    --task-bg: white;
+    --calendar-bg: white;
+    --day-highlight: #f9c7d9;
+    --day-task: #cde3fa;
+    --pin-color: #3399ff;
+}
+
+/* Theme: Dark */
+body.dark {
+    --board-bg: #1e1e2f;
+    --board-border: #0d0d17;
+    --text-color: #e0e0e0;
+    --title-bg: #2a2a40;
+    --title-color: #a8a8cc;
+    --note-blue: #3b4f71;
+    --note-pink: #63405a;
+    --note-yellow: #5f5840;
+    --note-green: #3e715b;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --sidebar-button-bg: #3b4f71;
+    --sidebar-button-color: #a8bbcc;
+    --window-bg: #2a3040;
+    --window-view-bg: linear-gradient(to bottom, #303952, #1e1e2f);
+    --curtain-color: #3b4f71;
+    --desk-bg: #2a2a35;
+    --monitor-bg: #181825;
+    --monitor-border: #090912;
+    --plant-pot: #3d3a3a;
+    --plant-leaves: #3e715b;
+    --task-bg: #292938;
+    --calendar-bg: #292938;
+    --day-highlight: #63405a;
+    --day-task: #3b4f71;
+    --pin-color: #6699cc;
+}
+
+/* Theme: Pastel */
+body.pastel {
+    --board-bg: #f8f9f9;
+    --board-border: #e6e6e6;
+    --text-color: #444;
+    --title-bg: #e1f0f7;
+    --title-color: #617d8a;
+    --note-blue: #aee1f9;
+    --note-pink: #f7c3e3;
+    --note-yellow: #fff6b7;
+    --note-green: #d3f9d8;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --sidebar-button-bg: #aee1f9;
+    --sidebar-button-color: #6d90a2;
+    --window-bg: #e1f0f7;
+    --window-view-bg: linear-gradient(to bottom, #c4e7f2, #e9f6fb);
+    --curtain-color: #aee1f9;
+    --desk-bg: #f8f4f1;
+    --monitor-bg: white;
+    --monitor-border: #d8d8d8;
+    --plant-pot: #d5c5b7;
+    --plant-leaves: #d3f9d8;
+    --task-bg: white;
+    --calendar-bg: white;
+    --day-highlight: #f7c3e3;
+    --day-task: #aee1f9;
+    --pin-color: #77bbee;
+}
+
+/* Theme: Retro */
+body.retro {
+    --board-bg: #f4ecd8;
+    --board-border: #b8a062;
+    --text-color: #2c2c2c;
+    --title-bg: #e0c9a6;
+    --title-color: #5e4c2c;
+    --note-blue: #7fa0ae;
+    --note-pink: #e7a5a1;
+    --note-yellow: #f3c75f;
+    --note-green: #a6b885;
+    --shadow-color: rgba(100, 70, 40, 0.2);
+    --sidebar-button-bg: #7fa0ae;
+    --sidebar-button-color: #3d5866;
+    --window-bg: #a9c3c9;
+    --window-view-bg: linear-gradient(to bottom, #94b8c2, #c9dce2);
+    --curtain-color: #7fa0ae;
+    --desk-bg: #c9b18c;
+    --monitor-bg: #e0daca;
+    --monitor-border: #726649;
+    --plant-pot: #8a6c47;
+    --plant-leaves: #a6b885;
+    --task-bg: #f2e8cc;
+    --calendar-bg: #f2e8cc;
+    --day-highlight: #e7a5a1;
+    --day-task: #7fa0ae;
+    --pin-color: #7fa0ae;
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
-    background-color: #ffffff;
+    background-color: var(--board-bg);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     position: relative;
+    color: var(--text-color);
+}
+
+.theme-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+}
+
+.theme-buttons button {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.theme-buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#theme-soft {
+    background-color: #f9c7d9;
+    color: #633;
+}
+
+#theme-dark {
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+}
+
+#theme-pastel {
+    background-color: #aee1f9;
+    color: #617d8a;
+}
+
+#theme-retro {
+    background-color: #f3c75f;
+    color: #5e4c2c;
 }
 
 .desk-lamp {
@@ -88,8 +267,8 @@ body {
     grid-column: 2 / 3;
     text-align: center;
     font-size: 20px;
-    color: #633;
-    background-color: #f8d7c3;
+    color: var(--title-color);
+    background-color: var(--title-bg);
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0 4px 8px var(--shadow-color);
@@ -102,7 +281,7 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--pink-light);
+    background-color: var(--note-pink);
     box-shadow: 0 4px 8px var(--shadow-color);
     position: relative;
     overflow: hidden;
@@ -131,14 +310,14 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--blue-light);
+    background-color: var(--sidebar-button-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 8px var(--shadow-color);
     cursor: pointer;
     font-size: 24px;
-    color: #637a9f;
+    color: var(--sidebar-button-color);
     transition: transform 0.2s;
 }
 
@@ -149,7 +328,7 @@ body {
 .window-section {
     grid-row: 2;
     grid-column: 2 / 4;
-    background-color: #c5d8e8;
+    background-color: var(--window-bg);
     border-radius: 15px;
     box-shadow: 0 4px 8px var(--shadow-color);
     padding: 15px;
@@ -167,13 +346,13 @@ body {
 .curtain {
     width: 45%;
     height: 150px;
-    background-color: var(--blue-light);
+    background-color: var(--curtain-color);
     border-radius: 0 0 10px 10px;
 }
 
 .window-view {
     flex: 1;
-    background: linear-gradient(to bottom, #87ceeb, #e6f7ff);
+    background: var(--window-view-bg);
     border-radius: 10px;
     margin-top: 10px;
     position: relative;
@@ -198,6 +377,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    color: var(--text-color);
 }
 
 .note-pin {
@@ -207,23 +387,23 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #3399ff;
+    background-color: var(--pin-color);
 }
 
 .note-blue {
-    background-color: var(--blue-light);
+    background-color: var(--note-blue);
 }
 
 .note-pink {
-    background-color: var(--pink-light);
+    background-color: var(--note-pink);
 }
 
 .note-yellow {
-    background-color: var(--yellow-light);
+    background-color: var(--note-yellow);
 }
 
 .note-green {
-    background-color: var(--green-light);
+    background-color: var(--note-green);
 }
 
 .task-calendar-section {
@@ -235,7 +415,7 @@ body {
 }
 
 .task-list {
-    background-color: white;
+    background-color: var(--task-bg);
     border-radius: 15px;
     box-shadow: 0 4px 8px var(--shadow-color);
     padding: 15px;
@@ -246,11 +426,11 @@ body {
     text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-color);
 }
 
 .calendar {
-    background-color: white;
+    background-color: var(--calendar-bg);
     border-radius: 15px;
     box-shadow: 0 4px 8px var(--shadow-color);
     padding: 15px;
@@ -262,10 +442,11 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 .calendar-day {
-    background-color: var(--blue-light);
+    background-color: var(--note-blue);
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -273,7 +454,7 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
 }
 
 .calendar-grid {
@@ -290,21 +471,21 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 10px;
-    color: #333;
+    color: var(--text-color);
 }
 
 .cell-highlight {
-    background-color: var(--pink-light);
+    background-color: var(--day-highlight);
 }
 
 .cell-task {
-    background-color: var(--blue-light);
+    background-color: var(--day-task);
 }
 
 .desk-area {
     grid-row: 2;
     grid-column: 3;
-    background-color: #e8d5c5;
+    background-color: var(--desk-bg);
     border-radius: 15px;
     box-shadow: 0 4px 8px var(--shadow-color);
     padding: 15px;
@@ -315,9 +496,9 @@ body {
 .computer-monitor {
     width: 120px;
     height: 80px;
-    background-color: white;
+    background-color: var(--monitor-bg);
     border-radius: 5px;
-    border: 5px solid #333;
+    border: 5px solid var(--monitor-border);
     margin: 0 auto;
     position: relative;
 }
@@ -325,7 +506,7 @@ body {
 .monitor-stand {
     width: 30px;
     height: 10px;
-    background-color: #333;
+    background-color: var(--monitor-border);
     margin: 0 auto;
 }
 
@@ -338,14 +519,14 @@ body {
 .desk-item {
     width: 20px;
     height: 20px;
-    background-color: var(--pink-light);
+    background-color: var(--note-pink);
     border-radius: 5px;
 }
 
 .plant-pot {
     width: 25px;
     height: 30px;
-    background-color: #bf8c6d;
+    background-color: var(--plant-pot);
     border-radius: 5px 5px 10px 10px;
     position: relative;
 }
@@ -356,7 +537,7 @@ body {
     left: 0;
     width: 25px;
     height: 20px;
-    background-color: #77dd77;
+    background-color: var(--plant-leaves);
     border-radius: 50%;
 }
 
@@ -370,5 +551,12 @@ body {
 
     .desk-lamp {
         display: none;
+    }
+    
+    .theme-buttons {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        flex-direction: column;
     }
 }

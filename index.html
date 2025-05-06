@@ -7,24 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <div class="desk-lamp">
+<body class="soft">
+    <!-- <div class="desk-lamp">
         <div class="lamp-base"></div>
         <div class="lamp-arm"></div>
         <div class="lamp-joint"></div>
         <div class="lamp-head"></div>
-    </div>
+    </div> -->
 
+    <div class="theme-buttons">
+        <button id="theme-soft">Soft</button>
+        <button id="theme-dark">Dark</button>
+        <button id="theme-pastel">Pastel</button>
+        <button id="theme-retro">Retro</button>
+    </div>
+    
     <div class="dashboard-container">
         <div class="board-title">ʕ•ᴥ•ʔ PinUp! ʕ•ᴥ•ʔ</div>
         <div class="avatar-main avatar"></div>
 
         <div class="sidebar">
-            <div class="sidebar-button">🔍</div>
-            <div class="sidebar-button">📋</div>
-            <div class="sidebar-button">🔔</div>
-            <div class="sidebar-button">💌</div>
-            <div class="sidebar-button">⚙️</div>
+            <div id="search" class="sidebar-button">🔍</div>
+            <div id="tasks" class="sidebar-button">📋</div>
+            <div id="notif" class="sidebar-button">🔔</div>
+            <div id="mail" class="sidebar-button">💌</div>
+            <div id="settings" class="sidebar-button">⚙️</div>
         </div>
 
         <div class="window-section">
@@ -89,7 +96,7 @@
                 <div class="task-header">TASK LIST</div>
                 <!-- Task list items would go here -->
             </div>
-            <div class="calendar">
+            <div class="calendar" id="TaskCalendar">
                 <div class="calendar-header">
                     <div>YESTERDAY</div>
                     <div class="calendar-day">18</div>
@@ -132,6 +139,6 @@
         </div>
     </div>
 
-    <script src= "script.js"></script>    
+    <script src="script.js"></script>    
 </body>
 </html>
