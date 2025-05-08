@@ -27,11 +27,23 @@
         <div class="avatar-main avatar"></div>
 
         <div class="sidebar">
-            <div id="search" class="sidebar-button">🔍</div>
-            <div id="tasks" class="sidebar-button">📋</div>
-            <div id="notif" class="sidebar-button">🔔</div>
-            <div id="mail" class="sidebar-button">💌</div>
-            <div id="settings" class="sidebar-button">⚙️</div>
+            <div class="sidebar-button search-button" id="search">🔍</div>
+            <div class="sidebar-button add-event-button" id="tasks">📋</div>
+            <div class="sidebar-button notifications-button" id="notif">🔔</div>
+            <div class="sidebar-button mail-button" id="mail">💌</div>
+            <div class="sidebar-button settings-button" id="settings">⚙️</div>
+        </div>
+
+        <div id="popup" class="popup hidden">
+            <div class="popup-content">
+                <span id="close-popup" class="close-button">&times;</span>
+                <h3>Add Event</h3>
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" placeholder="Enter date (1-31)" />
+                <label for="event-title">Event:</label>
+                <input type="text" id="event-title" placeholder="Event title" />
+                <button id="save-event">Save</button>
+            </div>
         </div>
 
         <div class="window-section">
@@ -39,7 +51,16 @@
                 <div class="curtain"></div>
                 <div class="curtain"></div>
             </div>
-            <div class="window-view"></div>
+            <div class="window-view">
+                <div class = "clock">
+                    <span id ="hrs">00</span>
+                    <span>:</span>
+                    <span id ="mins">00</span>
+                    <span>:</span>
+                    <span id ="secs">00</span>
+                </div>
+            </div>
+            
         </div>
 
         <div class="desk-area">
@@ -58,8 +79,8 @@
 
         <div class="sticky-notes-container">
             <div class="sticky-note note-blue">
-                1
                 <div class="note-pin"></div>
+                1
             </div>
             <div class="sticky-note note-pink">
                 2
@@ -95,6 +116,11 @@
             <div class="task-list">
                 <div class="task-header">TASK LIST</div>
                 <!-- Task list items would go here -->
+                <div class="task-bar">
+                    2025-05-05: Sample Event
+                    <button class="delete-task" data-index="0">❌</button>
+                  </div>
+                  
             </div>
             <div class="calendar" id="TaskCalendar">
                 <div class="calendar-header">
