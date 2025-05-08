@@ -25,6 +25,11 @@
     --day-highlight: #ffcce6;
     --day-task: #b3d9ff;
     --pin-color: #3399ff;
+    --task-bar-bg: #f2f6ff;
+    --task-bar-border: #4a90e2;
+    --task-bar-shadow: rgba(0, 0, 0, 0.1);
+    --task-bar-text: #333;
+    --delete-task-color: #e74c3c;
 }
 
 /* Theme: Soft (default) */
@@ -54,6 +59,11 @@ body.soft {
     --day-highlight: #f9c7d9;
     --day-task: #cde3fa;
     --pin-color: #3399ff;
+    --task-bar-bg: #f2f6ff;
+    --task-bar-border: #4a90e2;
+    --task-bar-shadow: rgba(0, 0, 0, 0.1);
+    --task-bar-text: #333;
+    --delete-task-color: #e74c3c;
 }
 
 /* Theme: Dark */
@@ -83,6 +93,11 @@ body.dark {
     --day-highlight: #63405a;
     --day-task: #3b4f71;
     --pin-color: #6699cc;
+    --task-bar-bg: #1e1e2f;
+    --task-bar-border: #4a90e2;
+    --task-bar-shadow: rgba(0, 0, 0, 0.2);
+    --task-bar-text: #ffffff;
+    --delete-task-color: #ff6b6b;
 }
 
 /* Theme: Pastel */
@@ -112,6 +127,11 @@ body.pastel {
     --day-highlight: #f7c3e3;
     --day-task: #aee1f9;
     --pin-color: #77bbee;
+    --task-bar-bg: #e9f6fb;
+    --task-bar-border: #aee1f9;
+    --task-bar-shadow: rgba(0, 0, 0, 0.05);
+    --task-bar-text: #617d8a;
+    --delete-task-color: #e77c8a;
 }
 
 /* Theme: Retro */
@@ -141,6 +161,11 @@ body.retro {
     --day-highlight: #e7a5a1;
     --day-task: #7fa0ae;
     --pin-color: #7fa0ae;
+    --task-bar-bg: #f2e8cc;
+    --task-bar-border: #b8a062;
+    --task-bar-shadow: rgba(100, 70, 40, 0.15);
+    --task-bar-text: #5e4c2c;
+    --delete-task-color: #c17a7a;
 }
 
 body {
@@ -443,23 +468,24 @@ body {
 }
 
 .task-bar {
-    background-color: #f2f6ff;
-    border-left: 5px solid #4a90e2;
+    background-color: var(--task-bar-bg);
+    border-left: 5px solid var(--task-bar-border);
     padding: 8px 10px;
     margin: 8px 0;
     border-radius: 8px;
     font-size: 0.95em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--task-bar-shadow);
     display: flex;
     justify-content: space-between; /* Push X to the right */
     align-items: center;
     position: relative;
+    color: var(--task-bar-text);
 }
 
 .delete-task {
     background: none;
     border: none;
-    color: #e74c3c;
+    color: var(--delete-task-color);
     font-size: 1.1em;
     cursor: pointer;
     opacity: 0;
@@ -469,7 +495,6 @@ body {
 .task-bar:hover .delete-task {
     opacity: 1;
 }
-
 
 .task-header {
     text-align: center;
@@ -628,6 +653,7 @@ body {
     display: inline-block;
     text-align: center;
     position: relative;
+    color: var(--text-color);
 }
 
 .popup {
@@ -644,12 +670,13 @@ body {
 }
   
 .popup-content {
-    background: white;
+    background: var(--task-bg);
     padding: 20px;
     border-radius: 8px;
     min-width: 300px;
     position: relative;
     text-align: center;
+    color: var(--text-color);
 }
   
 .hidden {
@@ -662,6 +689,7 @@ body {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
+    color: var(--text-color);
 }
   
 .popup-content input {
@@ -669,9 +697,19 @@ body {
     margin: 10px auto;
     padding: 5px;
     width: 80%;
+    background-color: var(--board-bg);
+    color: var(--text-color);
+    border: 1px solid var(--board-border);
+    border-radius: 4px;
 }
   
 .popup-content button {
     padding: 5px 10px;
     margin-top: 10px;
+    background-color: var(--sidebar-button-bg);
+    color: var(--sidebar-button-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
 }
